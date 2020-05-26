@@ -13,7 +13,7 @@ weatherForm.addEventListener('submit', (event) => {
         messageOne.textContent = "Please enter a valid location";
         return;
     }
-    const url = "http://localhost:3030/weather?location="+location;
+    const url = "/weather?location="+location;
     fetch(url).then((response) => {
         response.json().then((data) => {
             if(data.error){

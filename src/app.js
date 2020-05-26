@@ -2,10 +2,11 @@ const path = require('path')
 const express = require('express');
 const hbs = require('hbs');
 const request = require('postman-request');
-const geocode = require('./utils/geocode')
-const weather = require('./utils/weather')
+const geocode = require('./utils/geocode');
+const weather = require('./utils/weather');
 
 const app = express();
+const port = process.env.PORT || 3030;
 
 const publicDir = path.join(__dirname,"../public");
 const veiwsPath = path.join(__dirname,"../templates/views");
@@ -82,4 +83,5 @@ app.get('*',(req,res) =>{
     });
 });
 
-app.listen(3030);
+app.listen(port);
+console.log("weather app server started on" + port);
