@@ -84,4 +84,4 @@ app.get('*',(req,res) =>{
 });
 
 app.listen(port);
-console.log("weather app server started on" + port);
+console.log("weather app server started on " + port);
