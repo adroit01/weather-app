@@ -59,10 +59,12 @@ app.get('/weather',(req,res) => {
                     error: JSON.stringify(weatherError)
                 })
             } 
+            const degreeCelcius = '\u00B0' + "c";
             res.send({
                 "location": data.location,
-                "weatherDetail": "Temperature is " + weatherData.temperature + " degree celcius"
-                 + " humidity is " + weatherData.humidity + ". It is " + 
+                "weatherDetail": "Current Temperature is " + weatherData.temperature + degreeCelcius 
+                + " (Avg.Temp:" + weatherData.avgtemp + degreeCelcius+ ", Max Temp:" + weatherData.maxtemp + degreeCelcius+ ", Min Temp:" + weatherData.mintemp + degreeCelcius
+                + ")  Humidity is " + weatherData.humidity + "mm and Wind Speed:" + weatherData.windSpeed + "kmph. It is " + 
                  weatherData.weather_description + " observed at " + weatherData.localtime
             });
         });
