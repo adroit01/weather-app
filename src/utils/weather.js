@@ -11,9 +11,10 @@ const weather = ({latitude,longitude},callback) =>
         callback(body.error,undefined);
     }
     else{
-      const today  = new Date().toISOString().slice(0,10);
-      const dailyData = body.forecast[today]; 
-      console.log(dailyData);
+      var date  = new Date();
+      date.setDate(date.getDate() -1);
+      const prevDay  = date.toISOString().slice(0,10);
+      const dailyData = body.forecast[prevDay];
         callback(undefined, {
         name: body.location.name,
         localtime: body.location.localtime,
