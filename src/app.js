@@ -88,7 +88,7 @@ const incrementCount = () =>
         return '1';
     }
     var newCount = parseInt(accessCount) + 1;
-    fs.writeFileSync('AccessCount.txt', newCount);
+    fs.writeFileSync('/data/AccessCount.txt', newCount);
     return newCount;
 }
 app.get('/help/*',(req,res) =>{
