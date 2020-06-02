@@ -80,15 +80,15 @@ app.get('/weather',(req,res) => {
 const incrementCount = () => 
 {
     try {
-        var accessCount = fs.readFileSync('/data/AccessCount.txt');
+        var accessCount = fs.readFileSync('/AccessCount.txt');
     }
     catch(e)
     {
-        fs.writeFileSync('/data/AccessCount.txt', "1");
+        fs.writeFileSync('/AccessCount.txt', "1");
         return '1';
     }
     var newCount = parseInt(accessCount) + 1;
-    fs.writeFileSync('/data/AccessCount.txt', newCount);
+    fs.writeFileSync('/AccessCount.txt', newCount);
     return newCount;
 }
 app.get('/help/*',(req,res) =>{
