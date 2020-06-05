@@ -61,17 +61,12 @@ app.get('/weather',(req,res) => {
                 })
             } 
             const degreeCelcius = '\u00B0' + "c";
-
-            //Increment Count in file
-            var hitCount = incrementCount();
-            console.log(hitCount);
             res.send({
                 "location": data.location,
                 "weatherDetail": "Current Temperature is " + weatherData.temperature + degreeCelcius 
                 + " (Avg.Temp:" + weatherData.avgtemp + degreeCelcius+ ", Max Temp:" + weatherData.maxtemp + degreeCelcius+ ", Min Temp:" + weatherData.mintemp + degreeCelcius
                 + ")  Humidity is " + weatherData.humidity + "mm and Wind Speed:" + weatherData.windSpeed + "kmph. It is " + 
-                 weatherData.weather_description + " observed at " + weatherData.localtime,
-                 "hitCount": "HitCount:" + hitCount
+                 weatherData.weather_description + " observed at " + weatherData.localtime
             });
         });
     });
@@ -80,15 +75,15 @@ app.get('/weather',(req,res) => {
 const incrementCount = () => 
 {
     try {
-        var accessCount = fs.readFileSync('/AccessCount.txt');
+        var accessCount = fs.readFileSync('/data/AccessCount.txt');
     }
     catch(e)
     {
-        fs.writeFileSync('/AccessCount.txt', "1");
+        fs.writeFileSync('/data/AccessCount.txt', "1");
         return '1';
     }
     var newCount = parseInt(accessCount) + 1;
-    fs.writeFileSync('/AccessCount.txt', newCount);
+    fs.writeFileSync('/data/AccessCount.txt', newCount);
     return newCount;
 }
 app.get('/help/*',(req,res) =>{
